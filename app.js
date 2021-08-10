@@ -5,7 +5,7 @@ const path = require("path");
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, 'front-end/build')));
+app.use(express.static(path.resolve(__dirname, './front-end/build')));
 
 
 
@@ -14,7 +14,7 @@ app.use('/api/bike/available', require('./routes/bike.available.route'));
 app.use('/api/bike/rented', require('./routes/bike.rented.route'));
 
 app.get('/*', (req,res) =>{
-    res.sendFile(path.join(__dirname+'/front-end/build/index.html'));
+    res.sendFile(path.resolve(__dirname + './front-end/build' , 'index.html'));
 });
 
 const PORT = config.get('port') || 5000;
