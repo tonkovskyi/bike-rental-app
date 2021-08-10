@@ -5,12 +5,6 @@ const path = require("path");
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, 'front-end/build')));
-
-app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, 'front-end/build', 'index.html'));
-  });
-
 app.use(express.json({ extended: true} ));
 app.use('/api/bike/available', require('./routes/bike.available.route'));
 app.use('/api/bike/rented', require('./routes/bike.rented.route'));
@@ -29,6 +23,12 @@ async function start(){
         console.log('Server error', e.message);
         process.exit(1)
     }
-}
+};
+
+app.use(express.static(path.join(__dirname, 'front-end/build')));
+
+app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname, 'front-end/build', 'index.html'));
+  });
 
 start();
