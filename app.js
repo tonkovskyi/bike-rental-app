@@ -5,7 +5,7 @@ const path = require("path");
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, './front-end')));
+app.use(express.static(path.join(__dirname, 'front-end')));
 
 
 app.use(express.json({ extended: true} ));
