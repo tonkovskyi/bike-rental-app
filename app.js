@@ -5,8 +5,11 @@ const path = require("path");
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, 'front-end/build')));
 
+app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname, 'front-end/build', 'index.html'));
+  });
 
 app.use(express.json({ extended: true} ));
 app.use('/api/bike/available', require('./routes/bike.available.route'));
