@@ -1,8 +1,12 @@
 const express = require('express');
 const config = require('config');
 const mongoose = require('mongoose');
+const path = require("path");
 
 const app = express();
+
+app.use(express.static(path.join(__dirname, './front-end/public')));
+
 
 app.use(express.json({ extended: true} ));
 app.use('/api/bike/available', require('./routes/bike.available.route'));
